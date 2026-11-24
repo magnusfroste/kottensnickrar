@@ -64,6 +64,6 @@ memoryspel – därför hyllan som synligt resultat.
 (b) Verkligt kunskapskrav? Ja: mäta med linjal är explicit i MA.1-3.3.3 och förskjuten
 nollpunkt är det vanligaste felet lärare ser i åk 2–3.
 (c) Teknisk risk? Låg: ren DOM/SVG, en generator, inga fysikmotorer. Största risken är
-linjalens läsbarhet i porträtt på mobil – hanterad med 14 cm skala och min 3 cm mellan
-felvalen.
+linjalens läsbarhet på mobil – hanterad med en egen skala per nivå (9, 14 respektive 10 cm)
+ och minst 2 cm mellan felvalen.
 Beslut: GO.
