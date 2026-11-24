@@ -167,7 +167,7 @@
       xx = x(i);
       h.push('<line x1="' + xx + '" y1="' + RY + '" x2="' + xx + '" y2="' + (RY + (i % 5 === 0 ? 34 : 24)) +
         '" stroke="var(--bläck)" stroke-width="' + (i % 5 === 0 ? 5 : 3) + '" stroke-linecap="round"/>');
-      h.push('<text x="' + xx + '" y="' + (RY + 62) + '" text-anchor="middle" font-size="34" font-weight="700" fill="var(--bläck)">' + i + '</text>');
+      h.push('<text x="' + xx + '" y="' + (RY + 62) + '" text-anchor="middle" font-size="36" font-weight="700" fill="var(--bläck)">' + i + '</text>');
     }
     /* halvcentimeterstreck */
     for (i = 0; i < SPANN; i++) {
@@ -209,6 +209,20 @@
     l.setAttribute("x2", x(cm)); l.setAttribute("y2", PY + PH + 8);
     el.appendChild(l);
     setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 900);
+  }
+
+  function visaProvbit(cm) {
+    /* Fel svar: lägg en genomskinlig bit med den valda längden i öppningen så att
+       barnet ser hur långt den når – för kort eller för lång, utan att läsa. */
+    var el = document.getElementById("scen");
+    var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("class", "provbit");
+    g.innerHTML = '<rect x="' + x(0) + '" y="' + SHELF_Y + '" width="' + (cm * CM) + '" height="' + PH +
+      '" rx="6" fill="rgba(201,80,63,.18)" stroke="var(--fel)" stroke-width="5" stroke-dasharray="14 10"/>' +
+      '<line x1="' + x(cm) + '" y1="' + (SHELF_Y - 18) + '" x2="' + x(cm) + '" y2="' + (SHELF_Y + PH + 18) +
+      '" stroke="var(--fel)" stroke-width="6" stroke-linecap="round"/>';
+    el.appendChild(g);
+    setTimeout(function () { if (g.parentNode) g.parentNode.removeChild(g); }, 1400);
   }
 
   function ritaBrickor() {
@@ -278,7 +292,7 @@
     } else {
       S.felförsök++;
       var valt = p.alternativ[i];
-      visaSågstreck(valt);
+      visaSågstreck(valt); visaProvbit(valt);
       ljud(220, 0.16, "triangle");
       setTimeout(function () { ljud(170, 0.18, "triangle"); }, 150);
       if (b) { b.classList.add("fel"); setTimeout(function () { b.classList.remove("fel"); }, 420); }
